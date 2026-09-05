@@ -75,7 +75,7 @@ def test_pages_availability_for_different_users(
 @pytest.mark.parametrize(
     'name, args',
         (
-        ('notes:detail', pytest.lazy_fixture('slug_for_args')),
+        ('notes:detail', pytest.lzy_fixture('slug_for_args')),
         ('notes:edit', pytest.lazy_fixture('slug_for_args')),
         ('notes:delete', pytest.lazy_fixture('slug_for_args')),
         ('notes:add', None),
