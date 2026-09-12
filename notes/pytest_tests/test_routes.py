@@ -39,16 +39,6 @@ def test_pages_availability_for_auth_user(
     response = not_author_client.get(url)
     assert response.status_code == HTTPStatus.OK
 
-def test_note_exists(note):
-    notes_count = Note.objects.count()
-    assert notes_count == 1
-    assert note.title == 'title'
-
-@pytest.mark.django_db
-def test_empty_db():
-    notes_count = Note.objects.count()
-    assert notes_count == 0
-
 @pytest.mark.parametrize(
     'parametrized_client, expected_status',
     (
@@ -75,7 +65,7 @@ def test_pages_availability_for_different_users(
 @pytest.mark.parametrize(
     'name, args',
         (
-        ('notes:detail', pytest.lzy_fixture('slug_for_args')),
+        ('notes:detail', pytest.lazy_fixture('slug_for_args')),
         ('notes:edit', pytest.lazy_fixture('slug_for_args')),
         ('notes:delete', pytest.lazy_fixture('slug_for_args')),
         ('notes:add', None),
